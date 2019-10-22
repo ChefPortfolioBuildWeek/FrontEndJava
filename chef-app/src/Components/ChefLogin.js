@@ -41,14 +41,19 @@ const Button = styled.button`
 const ChefOnboarding = ({ values, touched, errors, status, props }) => {
   const [chefs, setChefs] = useState([]);
   const [login, setLogin] = useState([]);
-  const handleSubmit = () => {
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
     axiosWithAuth()
-      .post("https://lambda-chef-portfolio.herokuapp.com/api/auth/login")
+      .post("https://lambda-chef-portfolio.herokuapp.com/api/auth/login", login)
       .then(response => {
-        localStorage.setItem("token", response.data.token);
-        props.history.push("/ChefPostPage");
+        console.log(response);
+        localStorage.setItem("token", response.data.payload);
+        props.history.push("/chef-app/src/Components/ChefPostPage.js");
       })
       .catch(err => console.log("error in handlesSub", err.response));
+
     setLogin({ username: "", password: "" });
   };
   useEffect(

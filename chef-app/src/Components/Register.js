@@ -6,22 +6,19 @@ import { Link } from "react-router-dom";
 function Register(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit = e => {
-    e.preventDefault(props);
-
+  const [response, setResponse] = useState("");
+  const handleSubmit = () => {
     axiosWithAuth()
       .post(`https://lambda-chef-portfolio.herokuapp.com/api/auth/register`, {
         username: username,
         password
       })
       .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.token);
+        console.log(response);
+        localStorage.setItem("token", response.data.token);
         props.history.push("/ChefLogin");
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => console.log("error in handlesSub", err.response));
   };
 
   return (

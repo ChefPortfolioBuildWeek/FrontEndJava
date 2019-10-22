@@ -1,22 +1,61 @@
-const ChefCardPost = props => {
-    const { Content } = Layout;
-    function Homepage(props) {
-      const handleSubmit = e => {
-        e.preventDefault(props);
-        const baseURL =
-          'https://lambda-chef-portfolio.herokuapp.com/api/posts/create';
-        axiosWithAuth()
-          .post(`${baseURL}/posts/create`, { post })
-          .then(res => {
-            console.log(res);
-            localStorage.setItem('token', res.data.token);
-            props.history.push('/ChefLogin');
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      };
-      return <div className='ChefCard'></div>;
-    }
-   };
-   export default ChefCardPost;
+import React, { useState, useEffect } from "react";
+import { useContext } from "react";
+import axiosWithAuth from "../Utils/axiosWithAuth.js";
+import axios from "axios";
+export function ChefCardPost() {
+  const [deleteitem, setDeleteitem] = useState([]);
+  const [post, setPost] = useState([]);
+
+  axiosWithAuth()
+    .post(
+      `https://lambda-chef-portfolio.herokuapp.com/api/posts/create/posts/create`,
+      { post }
+    )
+    .then(res => {
+      console.log(res);
+      localStorage.setItem("token", res.data.token);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+  axiosWithAuth()
+    .put(`https://lambda-chef-portfolio.herokuapp.com/api/posts/update/id`, {
+      post
+    })
+    .then(res => {
+      console.log(res);
+      localStorage.setItem("token", res.data.token);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+  axiosWithAuth()
+    .delete(
+      `https://lambda-chef-portfolio.herokuapp.com/api/posts/delete/:id`,
+      {
+        post
+      }
+    )
+    .then(res => {
+      console.log(res);
+      localStorage.setItem("token", res.data.token);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+
+  return (
+    <div>
+      <h2>Chef Posting</h2>
+
+      <span
+        className="delete"
+        onClick={props => deleteitem(this.props.deleteitem)}
+      ></span>
+    </div>
+  );
+}
+
+export default ChefCardPost;
