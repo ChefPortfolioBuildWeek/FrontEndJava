@@ -27,12 +27,12 @@ const Button = styled.button`
     padding: 1%;
     width: 10%;
     font-weight: bold;
-    background-color: #52ad9c;
+    background-color: #9ffcdf;
     color: black;
     border: 2px solid black;
     border-radius: 5px;
     &:hover {
-        background-color: #9ffcdf;
+        background-color: white;
     }
 `;
 const CardArea = styled.div`

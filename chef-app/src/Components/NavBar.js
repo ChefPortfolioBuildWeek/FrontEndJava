@@ -25,8 +25,9 @@ const NavLinks = styled(Link)`
  margin-top: 1%;
  font-weight: bold;
  border-radius: 5px;
+ background-color: #9ffcdf;
  &:hover {
-   background-color: #9ffcdf;
+   background-color: white;
  }
 `;
 const Navo = styled.div`

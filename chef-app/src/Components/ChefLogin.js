@@ -80,7 +80,7 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
        <br />
        <button type='submit' className='SubmitButtonn'>
          Login!
-       </button>
+       </button><br />
        <span>
          Dont have an account? <Link to='/register'>Register Account!</Link>
        </span>
