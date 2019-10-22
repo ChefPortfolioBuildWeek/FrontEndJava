@@ -13,7 +13,7 @@ export function ChefCardPost() {
     )
     .then(res => {
       console.log(res);
-      localStorage.setItem("token", res.data.token);
+      localStorage.setPost("token", res.data.token);
     })
     .catch(err => {
       console.log(err);
@@ -25,7 +25,7 @@ export function ChefCardPost() {
     })
     .then(res => {
       console.log(res);
-      localStorage.setItem("token", res.data.token);
+      localStorage.setPost("token", res.data.token);
     })
     .catch(err => {
       console.log(err);
@@ -40,7 +40,7 @@ export function ChefCardPost() {
     )
     .then(res => {
       console.log(res);
-      localStorage.setItem("token", res.data.token);
+      localStorage.setPost("token", res.data.token);
     })
     .catch(err => {
       console.log(err);

@@ -38,21 +38,21 @@ const Button = styled.button`
   border-radius: 5%;
 `;
 
-const ChefOnboarding = ({ values, touched, errors, status, props }) => {
+export function ChefOnboarding({ values, touched, errors, status, props }) {
   const [chefs, setChefs] = useState([]);
   const [login, setLogin] = useState([]);
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    axiosWithAuth()
+    axios
       .post("https://lambda-chef-portfolio.herokuapp.com/api/auth/login", login)
-      .then(response => {
-        console.log(response);
-        localStorage.setItem("token", response.data.payload);
-        props.history.push("/chef-app/src/Components/ChefPostPage.js");
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.payload);
+        props.history.push("/ChefPostPage.js");
       })
-      .catch(err => console.log("error in handlesSub", err.response));
+      .catch(err => console.log("error in handlesSub", err.res));
 
     setLogin({ username: "", password: "" });
   };
@@ -79,7 +79,7 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
           checked={values.termsOfService}
         />
         <br />
-        <button type="submit" className="SubmitButtonn">
+        <button onSubmit="submit" className="SubmitButtonn">
           Login!
         </button>
         <span>
@@ -105,7 +105,7 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
            ))} */}
     </HomePage>
   );
-};
+}
 const FormikChefOnboarding = withFormik({
   mapPropsToValues({ name, email, password, termsOfService }) {
     return {
