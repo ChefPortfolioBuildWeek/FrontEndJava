@@ -5,31 +5,37 @@ import chefOnboarding from './Components/ChefLogin';
 import chefPosting from './Components/ChefPostPage';
 import styled from 'styled-components';
 import NavBar from './Components/NavBar'
+<<<<<<< HEAD
 import Signup from './Components/Register';
 import GuestHome from './Components/GuestHome';
+=======
+import signUpPage from './Components/Register';
+
+>>>>>>> 8aaf02e3da6495baff7257d5e05d3bdcdc0d4e0f
 
 const Header = styled.div`
- display: flex;
- justify-content: center;
+  display: flex;
+  justify-content: center;
 `;
 const NavLinks = styled.p`
- margin: 2%;
- width: 15%;
+  margin: 2%;
+  width: 15%;
 `;
 const Links = styled(Link)`
- text-decoration: none;
- font-size: 1.2rem;
- color: #52ad9c;
- font-weight: bold;
- padding: 4%;
- border: 4px solid #52ad9c;
- &:hover {
-   background-color: #47624f;
-   color: #edf9f3;
- }
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #52ad9c;
+  font-weight: bold;
+  padding: 4%;
+  border: 4px solid #52ad9c;
+  &:hover {
+    background-color: #47624f;
+    color: #edf9f3;
+  }
 `;
 
 function App() {
+<<<<<<< HEAD
  return (
    <div className='App'>
      <NavBar />
@@ -46,6 +52,23 @@ function App() {
      </Route>
    </div>
  );
+=======
+  return (
+    <div className="App">
+      <NavBar />
+      <Route>
+        <div>
+          <h1>Welcome to the Chef Portfolio!</h1>
+        </div>
+        <Switch>
+          <Route exact path="/" component={chefOnboarding} />
+          <Route exact path="/chefposts" component={chefPosting} />
+          <Route exact path="/register" component={signUpPage} />
+        </Switch>
+      </Route>
+    </div>
+  );
+>>>>>>> 8aaf02e3da6495baff7257d5e05d3bdcdc0d4e0f
 }
 
 export default App;
