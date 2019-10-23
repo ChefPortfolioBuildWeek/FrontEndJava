@@ -17,6 +17,30 @@ const NavDiv = styled.div`
 const NavLinks = styled.p`
   text-decoration: none;
   color: black;
+
+ display: flex;
+ justify-content: space-around;
+ margin: 0;
+ display: flex;
+ justify-content: space-around;
+ margin: 0 auto;
+ background-color: #52ad9c;
+ padding-bottom: 1%;
+ border-bottom: 4px solid #47624f;
+`;
+const NavLinks = styled(Link)`
+ color: black;
+ border: 2px solid black;
+ text-decoration: none;
+ padding: 0% 2% 0% 2%;
+ margin-top: 1%;
+ font-weight: bold;
+ border-radius: 5px;
+ background-color: #9ffcdf;
+ &:hover {
+   background-color: white;
+ }
+
 `;
 const Navo = styled.div`
   background: #9ffcdf;
@@ -24,6 +48,7 @@ const Navo = styled.div`
 `;
 
 function Nav() {
+
   return (
     <Navo>
       <NavDiv>
