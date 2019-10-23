@@ -50,39 +50,37 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
       .catch(err => console.log("error in handlesSub", err.response));
     setLogin({ username: "", password: "" });
   };
-
-  useEffect(
-    props => {
-      status && setChefs(chefs => [...chefs, status]);
-    },
-    [status]
-  );
-  return (
-    <HomePage>
-      <CenterForm>Login</CenterForm>
-      <Form>
-        <BoxField type="text" name="email" placeholder="email" />
-        {touched.email && errors.email && <p>{errors.email}</p>}
-        <br />
-        <BoxField type="password" name="password" placeholder="password" />
-        {touched.password && errors.password && <p>{errors.password}</p>}
-        <br />
-        <h2>Terms Of Service</h2>
-        <BoxField
-          type="checkbox"
-          name="termsOfService"
-          checked={values.termsOfService}
-        />
-        <br />
-        <button type="submit" className="SubmitButton">
-          Login!
-        </button><br />
-        <span>
-          Dont have an account? <Link to="./Register">Register Account!</Link>
-        </span>
-        <Route>
-          {/* <Route exact path=‘/chefposts’ component={chefPosting} />
-
+ useEffect(
+   props => {
+     status && setChefs(chefs => [...chefs, status]);
+   },
+   [status]
+ );
+ return (
+   <HomePage>
+     <CenterForm>Login</CenterForm>
+     <Form>
+       <BoxField type='text' name='username' placeholder='username' />
+       {touched.username && errors.username && <p>{errors.username}</p>}
+       <br />
+       <BoxField type='password' name='password' placeholder='password' />
+       {touched.password && errors.password && <p>{errors.password}</p>}
+       <br />
+       <h2>Terms Of Service</h2>
+       <BoxField
+         type='checkbox'
+         name='termsOfService'
+         checked={values.termsOfService}
+       />
+       <br />
+       <button type='submit' className='SubmitButtonn'>
+         Login!
+       </button><br />
+       <span>
+         Dont have an account? <Link to='/register'>Register Account!</Link>
+       </span>
+       <Route>
+         {/* <Route exact path=‘/chefposts’ component={chefPosting} />
                   <button type=‘submit’ onClick={chefPosting}>Login</button> */}
         </Route>
       </Form>
@@ -104,15 +102,15 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
 };
 const FormikChefOnboarding = withFormik({
 
-  mapPropsToValues({ email, password, termsOfService }) {
+  mapPropsToValues({ username, password, termsOfService }) {
     return {
-      email: email || "",
+      username: username || "",
       password: password || "",
       termsOfService: termsOfService || false
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string().required("Email is a required field"),
+    username: Yup.string().required("Username is a required field"),
     password: Yup.string().required("Password is a required field")
 
   })

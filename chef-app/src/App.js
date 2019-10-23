@@ -6,7 +6,7 @@ import chefPosting from './Components/ChefPostPage';
 import styled from 'styled-components';
 import NavBar from './Components/NavBar'
 import signUpPage from './Components/Register';
-
+import GuestHome from './Components/GuestHome';
 
 const Header = styled.div`
   display: flex;
@@ -41,6 +41,7 @@ function App() {
           <Route exact path="/" component={chefOnboarding} />
           <Route exact path="/chefposts" component={chefPosting} />
           <Route exact path="/register" component={signUpPage} />
+          <Route exact path='/guesthome' component={GuestHome} />
         </Switch>
       </Route>
     </div>
