@@ -64,9 +64,6 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
     <HomePage>
       <CenterForm>Login</CenterForm>
       <Form>
-        <BoxField type="text" name="name" placeholder="name" />
-        {touched.name && errors.name && <p>{errors.name}</p>}
-        <br />
         <BoxField type="text" name="email" placeholder="email" />
         {touched.email && errors.email && <p>{errors.email}</p>}
         <br />
@@ -82,7 +79,7 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
         <br />
         <button type="submit" className="SubmitButton">
           Login!
-        </button>
+        </button><br />
         <span>
           Dont have an account? <Link to="./Register">Register Account!</Link>
         </span>
@@ -110,16 +107,14 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
 };
 const FormikChefOnboarding = withFormik({
 
-  mapPropsToValues({ name, email, password, termsOfService }) {
+  mapPropsToValues({ email, password, termsOfService }) {
     return {
-      name: name || "",
       email: email || "",
       password: password || "",
       termsOfService: termsOfService || false
     };
   },
   validationSchema: Yup.object().shape({
-    name: Yup.string().required("Name is a required field"),
     email: Yup.string().required("Email is a required field"),
     password: Yup.string().required("Password is a required field")
 

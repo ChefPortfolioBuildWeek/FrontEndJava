@@ -20,10 +20,10 @@ const RegisterForm = styled.div`
 `;
 const BoxField = styled.input`
  padding: 1%;
+ margin: 0 auto;
  margin-top: 1%;
  border: 2px solid black;
  width: 20%;
- margin: 0 auto;
 `;
 const CenterForm = styled.h1`
  margin-top: 35%;
@@ -67,7 +67,7 @@ function Register(props) {
             type="password"
             onChange={e => setPassword(e.target.value)}
             placeholder="password"
-          />
+          /><br />
         </RegisterForm>
         <button type="submit" className="SubmitButtonregister">
           Connect!
