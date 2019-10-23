@@ -50,30 +50,30 @@ function Register(props) {
       });
   };
   return (
-    <div className="RegisterForm">
+    <RegisterPage>
       <form onSubmit={handleSubmit}>
-        <p>Register</p>
-        <div className="inputregister">
-          <input
+        <CenterForm>Register</CenterForm>
+        <RegisterForm>
+          <BoxField
             value={username}
             name="username"
             type="text"
             onChange={e => setUsername(e.target.value)}
             placeholder="username"
           />
-          <input
+          <BoxField
             value={password}
             name="password"
             type="password"
             onChange={e => setPassword(e.target.value)}
             placeholder="password"
           />
-        </div>
+        </RegisterForm>
         <button type="submit" className="SubmitButtonregister">
           Connect!
         </button>
       </form>
-    </div>
+    </RegisterPage>
   );
 }
 export default Register;
