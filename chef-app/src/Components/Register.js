@@ -43,7 +43,7 @@ function Register(props) {
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        props.history.push("/ChefLogin");
+        props.history.push("/");
       })
       .catch(err => {
         console.log(err);

@@ -50,7 +50,7 @@ function Nav() {
           <p>Chef Post</p>
         </NavLinks>
         <NavLinks>
-          <p>Homepage</p>
+          <p>Guest Home</p>
         </NavLinks>
         <Route exact path="/cheflogin" component={SigninPage} />
         <Route exact path="/chefpostpage" component={ChefPostPage} />
