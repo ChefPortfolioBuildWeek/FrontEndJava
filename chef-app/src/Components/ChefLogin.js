@@ -5,10 +5,9 @@ import * as Yup from "yup";
 import axios from "axios";
 import chefPosting from "./ChefPostPage";
 import styled from "styled-components";
-import axiosWithAuth from "../Utils/axiosWithAuth";
+import axiosWithAuth from "../Utils/axiosWithAuth.js";
 // import GetLogin from ‘./Login.js’;
-import RegisterForm from "./Register";
-
+import RegisterForm from "./Register.js";
 const HomePage = styled.div`
   background-color: #52ad9c;
   color: 347624f;
@@ -37,23 +36,18 @@ const Button = styled.button`
   border: 2px solid #47624f;
   border-radius: 5%;
 `;
-
-export function ChefOnboarding({ values, touched, errors, status, props }) {
+const ChefOnboarding = ({ values, touched, errors, status, props }) => {
   const [chefs, setChefs] = useState([]);
   const [login, setLogin] = useState([]);
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    axios
+  const handleSubmit = values => {
+    values.preventDefault();
+    axiosWithAuth()
       .post("https://lambda-chef-portfolio.herokuapp.com/api/auth/login", login)
-      .then(res => {
-        console.log(res);
-        localStorage.setItem("token", res.data.payload);
-        props.history.push("/ChefPostPage.js");
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+        props.history.push("/ChefPostPage");
       })
-      .catch(err => console.log("error in handlesSub", err.res));
-
+      .catch(err => console.log("error in handlesSub", err.response));
     setLogin({ username: "", password: "" });
   };
   useEffect(
@@ -66,6 +60,9 @@ export function ChefOnboarding({ values, touched, errors, status, props }) {
     <HomePage>
       <CenterForm>Login</CenterForm>
       <Form>
+        <BoxField type="text" name="name" placeholder="name" />
+        {touched.name && errors.name && <p>{errors.name}</p>}
+        <br />
         <BoxField type="text" name="email" placeholder="email" />
         {touched.email && errors.email && <p>{errors.email}</p>}
         <br />
@@ -79,7 +76,7 @@ export function ChefOnboarding({ values, touched, errors, status, props }) {
           checked={values.termsOfService}
         />
         <br />
-        <button onSubmit="submit" className="SubmitButtonn">
+        <button type="submit" className="SubmitButton">
           Login!
         </button>
         <span>
@@ -105,7 +102,7 @@ export function ChefOnboarding({ values, touched, errors, status, props }) {
            ))} */}
     </HomePage>
   );
-}
+};
 const FormikChefOnboarding = withFormik({
   mapPropsToValues({ name, email, password, termsOfService }) {
     return {

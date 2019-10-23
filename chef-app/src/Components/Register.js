@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
-import axiosWithAuth from "../Utils/axiosWithAuth";
 import { Link } from "react-router-dom";
-
 function Register(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const handleSubmit = e => {
+    e.preventDefault(props);
 
-  const handleSubmit = () => {
     axios
-      .post(`https://lambda-chef-portfolio.herokuapp.com/api/auth/register`, {
-        username: username,
-        password
-      })
-      .then(response => {
-        console.log(response);
-        localStorage.setItem("token", response.data.token);
+      .post('https://lambda-chef-portfolio.herokuapp.com/api/auth/register',{ username: username, password }
+      )
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
         props.history.push("/ChefLogin");
       })
-      .catch(err => console.log("error in handlesSub", err.response));
+      .catch(err => {
+        console.log(err);
+      });
   };
-
   return (
     <div className="RegisterForm">
       <form onSubmit={handleSubmit}>
@@ -41,12 +39,11 @@ function Register(props) {
             placeholder="password"
           />
         </div>
-        <button onSubmit="submit" className="SubmitButtonregister">
+        <button type="submit" className="SubmitButtonregister">
           Connect!
         </button>
       </form>
     </div>
   );
 }
-
 export default Register;
