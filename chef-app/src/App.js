@@ -5,13 +5,8 @@ import chefOnboarding from './Components/ChefLogin';
 import chefPosting from './Components/ChefPostPage';
 import styled from 'styled-components';
 import NavBar from './Components/NavBar'
-<<<<<<< HEAD
-import Signup from './Components/Register';
-import GuestHome from './Components/GuestHome';
-=======
 import signUpPage from './Components/Register';
-
->>>>>>> 8aaf02e3da6495baff7257d5e05d3bdcdc0d4e0f
+import GuestHome from './Components/GuestHome';
 
 const Header = styled.div`
   display: flex;
@@ -35,24 +30,6 @@ const Links = styled(Link)`
 `;
 
 function App() {
-<<<<<<< HEAD
- return (
-   <div className='App'>
-     <NavBar />
-     <Route>
-       <div>
-         <h1>Welcome to the Chef Portfolio!</h1>
-       </div>
-       <Switch>
-        <Route exact path='/' component={chefOnboarding} />
-        <Route exact path='/chefposts' component={chefPosting} />
-        <Route exact path='/register' component={Signup} />
-        <Route exact path='/guesthome' component={GuestHome} />
-       </Switch>
-     </Route>
-   </div>
- );
-=======
   return (
     <div className="App">
       <NavBar />
@@ -64,11 +41,11 @@ function App() {
           <Route exact path="/" component={chefOnboarding} />
           <Route exact path="/chefposts" component={chefPosting} />
           <Route exact path="/register" component={signUpPage} />
+          <Route exact path='/guesthome' component={GuestHome} />
         </Switch>
       </Route>
     </div>
   );
->>>>>>> 8aaf02e3da6495baff7257d5e05d3bdcdc0d4e0f
 }
 
 export default App;

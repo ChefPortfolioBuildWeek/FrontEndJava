@@ -49,55 +49,29 @@ const Navo = styled.div`
 `;
 
 function Nav() {
-<<<<<<< HEAD
- return (
-   <Navo>
-     <NavDiv>
-      <NavLinks to='/register'>
-        <p>Sign-Up</p>
-      </NavLinks>
-      <NavLinks to='/'>
-        <p>Login</p>
-      </NavLinks>
-      <NavLinks to='/Chefposts'>
-        <p>Chef Post</p>
-      </NavLinks>
-      <NavLinks to='/guesthome'>
-       <p>Guest Home</p>
-      </NavLinks>
-      <Route exact path='/cheflogin' component={SigninPage} />
-      <Route exact path='/chefpostpage' component={ChefPostPage} />
-      <NavLinksLogout to='/'>
-        <p>Log out</p>
-      </NavLinksLogout>
-    </NavDiv>
-   </Navo>
- );
-=======
 
   return (
     <Navo>
       <NavDiv>
-        <NavLinks to="/register">
-          <p>Sign-Up</p>
-        </NavLinks>
-        <NavLinks to="/">
-          <p>Login</p>
-        </NavLinks>
-        <NavLinks to="/Chefposts">
-          <p>Chef Post</p>
-        </NavLinks>
-        <NavLinks>
-          <p>Guest Home</p>
-        </NavLinks>
-        <Route exact path="/cheflogin" component={SigninPage} />
-        <Route exact path="/chefpostpage" component={ChefPostPage} />
-        <NavLinks to="/">
-          <p>Log out</p>
-        </NavLinks>
-      </NavDiv>
+       <NavLinks to='/register'>
+         <p>Sign-Up</p>
+       </NavLinks>
+       <NavLinks to='/'>
+         <p>Login</p>
+       </NavLinks>
+       <NavLinks to='/Chefposts'>
+         <p>Chef Post</p>
+       </NavLinks>
+       <NavLinks to='/guesthome'>
+        <p>Guest Home</p>
+       </NavLinks>
+       <Route exact path='/cheflogin' component={SigninPage} />
+       <Route exact path='/chefpostpage' component={ChefPostPage} />
+       <NavLinksLogout to='/'>
+         <p>Log out</p>
+       </NavLinksLogout>
+     </NavDiv>
     </Navo>
   );
->>>>>>> 8aaf02e3da6495baff7257d5e05d3bdcdc0d4e0f
 }
 export default Nav;
