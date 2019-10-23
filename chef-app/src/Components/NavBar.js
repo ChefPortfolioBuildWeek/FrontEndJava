@@ -1,12 +1,23 @@
-import React from 'react';
-import { Route, Link } from 'react-router-dom';
-import styled from 'styled-components';
-import SignUpPage from './Register';
-import ChefPostPage from './ChefPostPage';
-import SigninPage from './ChefLogin';
-import '../index.css';
+import React from "react";
+import { Route, Link } from "react-router-dom";
+import styled from "styled-components";
+import SignUpPage from "./Register";
+import ChefPostPage from "./ChefPostPage";
+import SigninPage from "./ChefLogin";
+import "../index.css";
 
 const NavDiv = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+`;
+const NavLinks = styled.p`
+  text-decoration: none;
+  color: black;
+
  display: flex;
  justify-content: space-around;
  margin: 0;
@@ -29,35 +40,37 @@ const NavLinks = styled(Link)`
  &:hover {
    background-color: white;
  }
+
 `;
 const Navo = styled.div`
- background: #9ffcdf;
- borderL 2px solid black;
+  background: #9ffcdf;
+  borderl: 2px solid black;
 `;
 
 function Nav() {
- return (
-   <Navo>
-     <NavDiv>
-      <NavLinks to='/register'>
-        <p>Sign-Up</p>
-      </NavLinks>
-      <NavLinks to='/'>
-        <p>Login</p>
-      </NavLinks>
-      <NavLinks to='/Chefposts'>
-        <p>Chef Post</p>
-      </NavLinks>
-      <NavLinks>
-       <p>Guest Home</p>
-      </NavLinks>
-      <Route exact path='/cheflogin' component={SigninPage} />
-      <Route exact path='/chefpostpage' component={ChefPostPage} />
-      <NavLinks to='/'>
-        <p>Log out</p>
-      </NavLinks>
-    </NavDiv>
-   </Navo>
- );
+
+  return (
+    <Navo>
+      <NavDiv>
+        <Link to="/register">
+          <NavLinks>Sign-Up</NavLinks>
+        </Link>
+        <Link to="/">
+          <NavLinks>Login</NavLinks>
+        </Link>
+        <Link to="/Chefposts">
+          <NavLinks>Chef Post</NavLinks>
+        </Link>
+        <Link>
+          <NavLinks>Homepage</NavLinks>
+        </Link>
+        <Route exact path="/cheflogin" component={SigninPage} />
+        <Route exact path="/chefpostpage" component={ChefPostPage} />
+        <Link to="/">
+          <NavLinks>Log out</NavLinks>
+        </Link>
+      </NavDiv>
+    </Navo>
+  );
 }
 export default Nav;
