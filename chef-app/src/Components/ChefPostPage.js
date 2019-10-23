@@ -17,8 +17,7 @@ const PostPage = styled.div`
     margin: 0 auto;
     border: 4px solid #47624f;
     border-radius: 10px;
-    height: 550px;
-
+    height: 100%;
 `;
 const BoxField = styled(Field)`
   padding: 1%;
@@ -31,7 +30,7 @@ const CenterForm = styled.h1`
 `;
 const Button = styled.button`
 
-    margin: 1% 0% 8% 0%;
+    margin: 1% 0% 2% 0%;
     padding: 1%;
     width: 10%;
     font-weight: bold;
@@ -59,8 +58,8 @@ const PostCards = styled.div`
   padding: 2%;
   text-align: left;
   &:hover {
-    background-color: #52ad9c;
-    color: #edf9f3;
+    background-color: #9ffcdf;
+    color: black;
   }
 `;
 const Big = styled.big`

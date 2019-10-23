@@ -9,7 +9,6 @@ import axiosWithAuth from "../Utils/axiosWithAuth.js";
 // import GetLogin from ‘./Login.js’;
 import RegisterForm from "./Register.js";
 const HomePage = styled.div`
-
  background-color: #52ad9c;
  color: 347624f;
  width: 90%;
@@ -25,9 +24,7 @@ const BoxField = styled(Field)`
   width: 20%;
 `;
 const CenterForm = styled.h1`
-
- margin-top: 30%;
-
+ margin-top: 12%;
 `;
 const Button = styled.button`
   margin: 1% 0% 1% 0%;

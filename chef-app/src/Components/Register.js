@@ -26,7 +26,7 @@ const BoxField = styled.input`
  width: 20%;
 `;
 const CenterForm = styled.h1`
- margin-top: 35%;
+ margin-top: 15%;
 `;
 
 
