@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {Route, Link, Switch} from 'react-router-dom';
 import './App.css';
@@ -6,7 +5,7 @@ import chefOnboarding from './Components/ChefLogin';
 import chefPosting from './Components/ChefPostPage';
 import styled from 'styled-components';
 import NavBar from './Components/NavBar'
-import Signup from './Components/Register';
+import signUpPage from './Components/Register';
 
 
 const Header = styled.div`
@@ -41,7 +40,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={chefOnboarding} />
           <Route exact path="/chefposts" component={chefPosting} />
-          <Route exact path="/register" component={SignUpPage} />
+          <Route exact path="/register" component={signUpPage} />
         </Switch>
       </Route>
     </div>
