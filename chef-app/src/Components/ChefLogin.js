@@ -16,7 +16,7 @@ const HomePage = styled.div`
  margin: 0 auto;
  border: 4px solid #47624f;
  border-radius: 10px;
- height: 80vh;
+ height: 1100px;
 `;
 const BoxField = styled(Field)`
  padding: 1%;
@@ -25,7 +25,7 @@ const BoxField = styled(Field)`
  width: 20%;
 `;
 const CenterForm = styled.h1`
- margin-top: 15%;
+ margin-top: 30%;
 `;
 const Button = styled.button`
  margin: 1% 0% 1% 0%;
@@ -65,9 +65,6 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
    <HomePage>
      <CenterForm>Login</CenterForm>
      <Form>
-       <BoxField type='text' name='name' placeholder='name' />
-       {touched.name && errors.name && <p>{errors.name}</p>}
-       <br />
        <BoxField type='text' name='email' placeholder='email' />
        {touched.email && errors.email && <p>{errors.email}</p>}
        <br />
@@ -83,9 +80,9 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
        <br />
        <button type='submit' className='SubmitButtonn'>
          Login!
-       </button>
+       </button><br />
        <span>
-         Dont have an account? <Link to='./Register'>Register Account!</Link>
+         Dont have an account? <Link to='/register'>Register Account!</Link>
        </span>
        <Route>
          {/* <Route exact path=‘/chefposts’ component={chefPosting} />
@@ -109,9 +106,8 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
  );
 };
 const FormikChefOnboarding = withFormik({
- mapPropsToValues({ name, email, password, termsOfService }) {
+ mapPropsToValues({ email, password, termsOfService }) {
    return {
-     name: name || '',
      email: email || '',
      password: password || '',
      termsOfService: termsOfService || false

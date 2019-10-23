@@ -11,7 +11,7 @@ const PostPage = styled.div`
     margin: 0 auto;
     border: 4px solid #47624f;
     border-radius: 10px;
-    height: 40vh;
+    height: 550px;
 `;
 const BoxField = styled(Field)`
     padding: 1%;
@@ -23,14 +23,17 @@ const CenterForm = styled.h1`
     margin-top: 5%;
 `;
 const Button = styled.button`
-    margin: 1% 0% 6% 0%;
+    margin: 1% 0% 8% 0%;
     padding: 1%;
     width: 10%;
     font-weight: bold;
     background-color: #9ffcdf;
-    color: #47624f;
-    border: 2px solid #47624f;
-    border-radius: 5%;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    &:hover {
+        background-color: white;
+    }
 `;
 const CardArea = styled.div`
     margin-left: 12%;
@@ -52,7 +55,7 @@ const PostCards = styled.div`
     }
 `;
 const Big = styled.big`
-    color: #43db43;
+    color: firebrick;
     font-weight: bold;
 `;
 
