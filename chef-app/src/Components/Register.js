@@ -39,7 +39,7 @@ function Register(props) {
      .then(res => {
        console.log(res);
        localStorage.setItem('token', res.data.token);
-       props.history.push('/ChefLogin');
+       props.history.push('/');
      })
      .catch(err => {
        console.log(err);
@@ -67,7 +67,7 @@ function Register(props) {
          /><br />
        </RegisterForm>
        <button type='submit' className='SubmitButtonregister'>
-         Connect!
+         Continue!
        </button>
      </form>
    </RegisterPage>
