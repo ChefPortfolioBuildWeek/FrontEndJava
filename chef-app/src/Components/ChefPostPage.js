@@ -8,6 +8,9 @@ import styled from "styled-components";
 import ChefCardPost from "./ChefCardPost";
 import ChefCardContext from "../context/ChefCardContext";
 
+import ImageUpload from "./ImageUpload";
+
+
 const PostPage = styled.div`
 
 
@@ -109,6 +112,8 @@ const ChefPosting = ({ values, touched, errors, status }) => {
           placeholder="instructions"
         />
         <br />
+        <ImageUpload />
+
         <Button type="submit">Post</Button>
       </Form>
       <CardArea>
