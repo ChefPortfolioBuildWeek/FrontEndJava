@@ -15,7 +15,7 @@ const HomePage = styled.div`
  margin: 0 auto;
  border: 4px solid #47624f;
  border-radius: 10px;
- height: 80vh;
+ height: 1100px;
 `;
 const BoxField = styled(Field)`
  padding: 1%;
@@ -24,7 +24,9 @@ const BoxField = styled(Field)`
  width: 20%;
 `;
 const CenterForm = styled.h1`
- margin-top: 15%;
+
+ margin-top: 30%;
+
 `;
 const Button = styled.button`
  margin: 1% 0% 1% 0%;
@@ -53,40 +55,42 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
       .catch(err => console.log('error in handlesSub', err.response));
     setLogin({ username: '', password: '' });
   };
- useEffect(
-   props => {
-     status && setChefs(chefs => [...chefs, status]);
-   },
-   [status]
- );
- return (
-   <HomePage>
-     <CenterForm>Login</CenterForm>
-     <Form>
-       <BoxField type='text' name='name' placeholder='name' />
-       {touched.name && errors.name && <p>{errors.name}</p>}
-       <br />
-       <BoxField type='text' name='email' placeholder='email' />
-       {touched.email && errors.email && <p>{errors.email}</p>}
-       <br />
-       <BoxField type='password' name='password' placeholder='password' />
-       {touched.password && errors.password && <p>{errors.password}</p>}
-       <br />
-       <h2>Terms Of Service</h2>
-       <BoxField
-         type='checkbox'
-         name='termsOfService'
-         checked={values.termsOfService}
-       />
-       <br />
-       <button type='submit' className='SubmitButton'>
-         Login!
-       </button>
-       <span>
-         Dont have an account? <Link to='./Register'>Register Account!</Link>
-       </span>
-       <Route>
-         {/* <Route exact path=‘/chefposts’ component={chefPosting} />
+
+  useEffect(
+    props => {
+      status && setChefs(chefs => [...chefs, status]);
+    },
+    [status]
+  );
+  return (
+    <HomePage>
+      <CenterForm>Login</CenterForm>
+      <Form>
+        <BoxField type="text" name="name" placeholder="name" />
+        {touched.name && errors.name && <p>{errors.name}</p>}
+        <br />
+        <BoxField type="text" name="email" placeholder="email" />
+        {touched.email && errors.email && <p>{errors.email}</p>}
+        <br />
+        <BoxField type="password" name="password" placeholder="password" />
+        {touched.password && errors.password && <p>{errors.password}</p>}
+        <br />
+        <h2>Terms Of Service</h2>
+        <BoxField
+          type="checkbox"
+          name="termsOfService"
+          checked={values.termsOfService}
+        />
+        <br />
+        <button type="submit" className="SubmitButton">
+          Login!
+        </button>
+        <span>
+          Dont have an account? <Link to="./Register">Register Account!</Link>
+        </span>
+        <Route>
+          {/* <Route exact path=‘/chefposts’ component={chefPosting} />
+
                   <button type=‘submit’ onClick={chefPosting}>Login</button> */}
        </Route>
      </Form>
@@ -107,19 +111,20 @@ const ChefOnboarding = ({ values, touched, errors, status, props }) => {
  );
 };
 const FormikChefOnboarding = withFormik({
- mapPropsToValues({ name, email, password, termsOfService }) {
-   return {
-     name: name || '',
-     email: email || '',
-     password: password || '',
-     termsOfService: termsOfService || false
-   };
- },
- validationSchema: Yup.object().shape({
 
-name: Yup.string().required('Name is a required field'),
-   email: Yup.string().required('Email is a required field'),
-   password: Yup.string().required('Password is a required field')
- })
+  mapPropsToValues({ name, email, password, termsOfService }) {
+    return {
+      name: name || "",
+      email: email || "",
+      password: password || "",
+      termsOfService: termsOfService || false
+    };
+  },
+  validationSchema: Yup.object().shape({
+    name: Yup.string().required("Name is a required field"),
+    email: Yup.string().required("Email is a required field"),
+    password: Yup.string().required("Password is a required field")
+
+  })
 })(ChefOnboarding);
 export default FormikChefOnboarding;
