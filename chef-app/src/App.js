@@ -1,13 +1,11 @@
-
-import React from 'react';
-import {Route, Link, Switch} from 'react-router-dom';
-import './App.css';
-import chefOnboarding from './Components/ChefLogin';
-import chefPosting from './Components/ChefPostPage';
-import styled from 'styled-components';
-import NavBar from './Components/NavBar'
-import Signup from './Components/Register';
-
+import React from "react";
+import { Route, Link, Switch } from "react-router-dom";
+import "./App.css";
+import chefOnboarding from "./Components/ChefLogin";
+import chefPosting from "./Components/ChefPostPage";
+import styled from "styled-components";
+import NavBar from "./Components/NavBar";
+import SignUpPage from "./Components/Register";
 
 const Header = styled.div`
   display: flex;

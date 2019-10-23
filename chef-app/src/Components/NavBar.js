@@ -28,7 +28,7 @@ const NavLinks = styled.p`
  padding-bottom: 1%;
  border-bottom: 4px solid #47624f;
 `;
-const NavLinks = styled(Link)`
+const NavLink = styled(Link)`
  color: black;
  border: 2px solid black;
  text-decoration: none;
