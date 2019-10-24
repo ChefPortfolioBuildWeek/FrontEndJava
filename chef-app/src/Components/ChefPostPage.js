@@ -2,11 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import styled from "styled-components";
-import ChefCardContext from "../context/ChefCardContext.js";
-import ChefCardPost from "./ChefCardPost.js";
+import axiosWithAuth from "../Utils/axiosWithAuth.js";
+//import ChefCardPost from "./ChefCardPost.js";
 
-import ImageUpload from "./ImageUpload";
-import ImageDownload from "./ImageDownload";
+//import ImageUpload from "./ImageUpload";
+//import ImageDownload from "./ImageDownload";
 
 const PostPage = styled.div`
   background-color: #52ad9c;
@@ -73,7 +73,6 @@ const ChefPosting = status => {
 
   return (
     <PostPage>
-      <ChefCardPost />
       <CenterForm>Make New Post</CenterForm>
       <Form>
         <BoxField type="text" name="title" placeholder="title/name of dish" />
@@ -130,10 +129,6 @@ const ChefPosting = status => {
               <Big>Location: </Big>
               {data.location}
             </p>
-            <p>
-              <Big>Picture: </Big>
-              <ImageDownload />
-            </p>
           </PostCards>
         ))}
       </CardArea>
@@ -159,7 +154,7 @@ const FormikChefPosting = withFormik({
     };
   },
   handleSubmit(values, { setStatus }) {
-    axios
+    axiosWithAuth()
       .post(
         "https://lambda-chef-portfolio.herokuapp.com/api/posts/create",
         values

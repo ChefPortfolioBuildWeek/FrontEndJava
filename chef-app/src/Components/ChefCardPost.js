@@ -8,7 +8,7 @@ function ChefCardPost() {
   const [post, setPost] = useState([]);
 
   // '/posts/create'
-  axios
+  axiosWithAuth()
     .post(`https://lambda-chef-portfolio.herokuapp.com/api/posts/create`, {
       post
     })
@@ -20,7 +20,7 @@ function ChefCardPost() {
       console.log(err);
     });
 
-  axiosWithAuth()
+  axios
     .put(`https://lambda-chef-portfolio.herokuapp.com/api/posts/update/id`, {
       post
     })
@@ -32,7 +32,7 @@ function ChefCardPost() {
       console.log(err);
     });
 
-  axiosWithAuth()
+  axios
     .delete(
       `https://lambda-chef-portfolio.herokuapp.com/api/posts/delete/:id`,
       {
