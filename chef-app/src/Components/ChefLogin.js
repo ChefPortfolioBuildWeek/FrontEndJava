@@ -96,12 +96,18 @@ const FormikChefOnboarding = withFormik({
     password: Yup.string().required("Password is a required field")
   }),
 
-  handleSubmit(props, login) {
+  handleSubmit(values, { props}) {
+    console.log(props);
     axios
-      .post("https://lambda-chef-portfolio.herokuapp.com/api/auth/login", login)
-      .then(response => {
-        localStorage.setItem("token", response.data.token);
+      .post(
+        "https://lambda-chef-portfolio.herokuapp.com/api/auth/login",
+        values
+      )
+      .then(res => {
+        console.log(res.data);
+        localStorage.setItem("token", res.data.token);
         props.history.push("/ChefPostPage");
+
       })
       .catch(err => console.log(err.response));
   }
