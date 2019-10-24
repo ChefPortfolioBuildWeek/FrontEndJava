@@ -36,6 +36,7 @@ const Button = styled.button`
   border: 2px solid #47624f;
   border-radius: 5%;
 `;
+
 const ChefOnboarding = ({ event, touched, errors, status, props }) => {
   const [username, setUsername] = useState([]);
   const [password, setPassword] = useState([]);
@@ -71,7 +72,7 @@ const ChefOnboarding = ({ event, touched, errors, status, props }) => {
       <Route>
         <Link to="/chefposts">Continue as Guest</Link>
         <Switch>
-          <Route exact path="/chefposts" component={chefPosting} />
+          <Route exact path="/Chefposts" component={chefPosting} />
         </Switch>
       </Route>
       {/* {chefs.map(chef => (
@@ -96,18 +97,17 @@ const FormikChefOnboarding = withFormik({
     password: Yup.string().required("Password is a required field")
   }),
 
-  handleSubmit(values, { props}) {
+  handleSubmit(Credentials, { props }) {
     console.log(props);
     axios
       .post(
         "https://lambda-chef-portfolio.herokuapp.com/api/auth/login",
-        values
+        Credentials
       )
       .then(res => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
-        props.history.push("/Chefposts");
-
+        this.props.history.push("/");
       })
       .catch(err => console.log(err.response));
   }

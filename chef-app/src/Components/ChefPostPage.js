@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import styled from "styled-components";
+import axiosWithAuth from "../Utils/axiosWithAuth.js";
+//import ChefCardPost from "./ChefCardPost.js";
+
+//import ImageUpload from "./ImageUpload";
+//import ImageDownload from "./ImageDownload";
 
 const PostPage = styled.div`
   background-color: #52ad9c;
@@ -58,7 +63,7 @@ const Big = styled.big`
   font-weight: bold;
 `;
 
-const ChefPosting = ({ status }) => {
+const ChefPosting = status => {
   // const [posts, setPosts] = useState([{title:' ', category:' ', description:' ', imgURL:' ', username:' ', location:' '}]);
   const [posts, setPosts] = useState([]);
 
@@ -70,11 +75,8 @@ const ChefPosting = ({ status }) => {
     <PostPage>
       <CenterForm>Make New Post</CenterForm>
       <Form>
-        <BoxField 
-        type="text" 
-        name="title" 
-        placeholder="title/name of dish" 
-        /><br />
+        <BoxField type="text" name="title" placeholder="title/name of dish" />
+        <br />
         <BoxField component="select" name="category">
           <option>Please Choose an Option</option>
           <option>Breakfast</option>
@@ -82,7 +84,8 @@ const ChefPosting = ({ status }) => {
           <option>Dinner</option>
           <option>Snack</option>
           <option>Dessert</option>
-        </BoxField><br />
+        </BoxField>
+        <br />
         <BoxField
           component="textarea"
           type="text"
@@ -152,8 +155,11 @@ const FormikChefPosting = withFormik({
     };
   },
   handleSubmit(values, { setStatus }) {
-    axios
-      .post("https://lambda-chef-portfolio.herokuapp.com/api/posts/create", values)
+    axiosWithAuth()
+      .post(
+        "https://lambda-chef-portfolio.herokuapp.com/api/posts/create",
+        values
+      )
       .then(res => {
         setStatus(res.data);
       })

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import "./App.css";
 import chefOnboarding from "./Components/ChefLogin";
@@ -7,7 +7,9 @@ import styled from "styled-components";
 import NavBar from "./Components/NavBar";
 import signUpPage from "./Components/Register";
 import GuestHome from "./Components/GuestHome";
-
+import PrivateRoute from "./Components/PrivateRoute";
+import GuestHomeContext from "./context/GuestHomeContext";
+import ChefCardContext from "./context/ChefCardContext";
 const Header = styled.div`
   display: flex;
   justify-content: center;
@@ -30,6 +32,12 @@ const Links = styled(Link)`
 `;
 
 function App() {
+  const [post, setPost] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [username, setUsername] = useState([]);
+  const [create, setcreate] = useState([]);
+  const [update, setupdate] = useState([]);
+
   return (
     <div className="App">
       <NavBar />
@@ -48,5 +56,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

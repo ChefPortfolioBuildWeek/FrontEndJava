@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import axiosWithAuth from '../Utils/axiosWithAuth';
+import React, { useState, useEffect,useContext } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import axiosWithAuth from "../Utils/axiosWithAuth";
+import GuestHomeContext from "../context/GuestHomeContext.js"
 
 const PostCard = styled.div`
   border: 2px solid black;
@@ -38,7 +39,7 @@ function GuestHome(handleSubmit) {
       const [cards, setCards] = useState([]);
       const [query, setQuery] = useState('');
       const [filteredCards, setFilteredCards] = useState([]);
-  
+
     useEffect(() => {
       axios
         .get('https://lambda-chef-portfolio.herokuapp.com/api/posts')
@@ -67,51 +68,67 @@ function GuestHome(handleSubmit) {
       })
       .catch(err => console.log(err.response));
   };
-    useEffect(() => {
-      setFilteredCards(
-        cards.filter(card =>
-          card.title.toLowerCase().includes(query.toLowerCase())
-        )
-      );
-    }, [query]);
-  
-    const handleInputChange = event => {
-      setQuery(event.target.value);
-    };
-  
-  
-    if (!cards) {
-      return (
-        <h1>Loading...</h1>
-      );
-    }
-    if (cards) {
+  useEffect(() => {
+    setFilteredCards(
+      cards.filter(card =>
+        card.title.toLowerCase().includes(query.toLowerCase())
+      )
+    );
+  }, [query]);
+
+  const handleInputChange = event => {
+    setQuery(event.target.value);
+  };
+
+  if (!cards) {
+    return <h1>Loading...</h1>;
+  }
+  if (cards) {
     return (
       <section>
         <Form>
           <Input
-          type='text'
-          onChange={handleInputChange}
-          value={query}
-          name='title'
-          tabIndex='0'
-          placeholder='search by title'
-          autoComplete='off'
+            type="text"
+            onChange={handleInputChange}
+            value={query}
+            name="title"
+            tabIndex="0"
+            placeholder="search by title"
+            autoComplete="off"
           />
         </Form>
         <CardArea>
           {filteredCards.map(data => (
             <PostCard key={data.id}>
-              <p><Topic>Dish: </Topic>{data.title}</p>
-              <p><Topic>Image: </Topic>{data.imageURL}</p>
-              <p><Topic>Category: </Topic>{data.category}</p>
-              <p><Topic>Chef: </Topic>{data.username}</p>
-              <p><Topic>Location: </Topic>{data.location}</p>
-              <p><Topic>Description: </Topic>{data.description}</p>
+              <p>
+                <Topic>Dish: </Topic>
+                {data.title}
+              </p>
+              <p>
+                <Topic>Image: </Topic>
+                {data.imageURL}
+              </p>
+              <p>
+                <Topic>Category: </Topic>
+                {data.category}
+              </p>
+              <p>
+                <Topic>Chef: </Topic>
+                {data.username}
+              </p>
+              <p>
+                <Topic>Location: </Topic>
+                {data.location}
+              </p>
+              <p>
+                <Topic>Description: </Topic>
+                {data.description}
+              </p>
             </PostCard>
           ))}
         </CardArea>
       </section>
-    )};
+    );
   }
+}
 export default GuestHome;
