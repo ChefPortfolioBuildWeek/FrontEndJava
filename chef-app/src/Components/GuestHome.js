@@ -52,7 +52,7 @@ function GuestHome(handleSubmit) {
         });
     }, []);
     handleSubmit = () => {
-    axiosWithAuth()
+    axios
       .get("https://lambda-chef-portfolio.herokuapp.com/api/users")
       .then(response => {
         console.log(response);
@@ -60,7 +60,7 @@ function GuestHome(handleSubmit) {
       .catch(err => console.log(err.response));
   };
   handleSubmit = () => {
-    axiosWithAuth()
+    axios
       .get("https://lambda-chef-portfolio.herokuapp.com/api/posts/:username")
       .then(response => {
         console.log(response);
