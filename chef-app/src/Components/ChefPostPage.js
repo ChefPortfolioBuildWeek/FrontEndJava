@@ -91,15 +91,22 @@ const ChefPosting = status => {
           type="text"
           name="description"
           placeholder="description"
-        />
-        <br />
-        <BoxField type="text" name="username" placeholder="username" />
-        <br />
-        <BoxField type="text" name="imgURL" placeholder="post an image" />
-        <br />
-        <BoxField type="text" name="locations" placeholder="city/state" />
-        <br />
-
+        /><br />
+        <BoxField
+          type="text"
+          name="username"
+          placeholder="username"
+        /><br />
+        <BoxField
+          type="text"
+          name="imgURL"
+          placeholder="post an image"
+        /><br />
+        <BoxField
+          type="text"
+          name="locations"
+          placeholder="city/state"
+        /><br />
         <Button type="submit">Post</Button>
       </Form>
       <CardArea>
@@ -128,6 +135,7 @@ const ChefPosting = status => {
             <p>
               <Big>Location: </Big>
               {data.location}
+              {console.log(data.location)};
             </p>
           </PostCards>
         ))}
@@ -136,21 +144,14 @@ const ChefPosting = status => {
   );
 };
 const FormikChefPosting = withFormik({
-  mapPropsToValues({
-    title,
-    category,
-    description,
-    username,
-    imgURL,
-    location
-  }) {
+  mapPropsToValues({ title, category, description, username, imgURL, locations }) {
     return {
       title: title || "",
       category: category || "",
       description: description || "",
       username: username || "",
       imgURL: imgURL || "",
-      location: location || ""
+      locations: locations || ""
     };
   },
   handleSubmit(values, { setStatus }) {

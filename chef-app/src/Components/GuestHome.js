@@ -36,25 +36,24 @@ const Input = styled.input`
 `;
 
 function GuestHome(handleSubmit) {
-  const { post, users, username } = useContext(GuestHomeContext);
-  const [cards, setCards] = useState([]);
-  const [query, setQuery] = useState("");
-  const [filteredCards, setFilteredCards] = useState([]);
+      const [cards, setCards] = useState([]);
+      const [query, setQuery] = useState('');
+      const [filteredCards, setFilteredCards] = useState([]);
 
-  useEffect(() => {
+    useEffect(() => {
+      axios
+        .get('https://lambda-chef-portfolio.herokuapp.com/api/posts')
+        .then(response => {
+          console.log(response.data);
+          setCards(response.data);
+          setFilteredCards(response.data);
+        })
+        .catch(error => {
+          console.log('Data not found', error)
+        });
+    }, []);
+    handleSubmit = () => {
     axios
-      .get("https://lambda-chef-portfolio.herokuapp.com/api/posts")
-      .then(response => {
-        console.log(response.data);
-        setCards(response.data);
-        setFilteredCards(response.data);
-      })
-      .catch(error => {
-        console.log("Data not found", error);
-      });
-  }, []);
-  handleSubmit = () => {
-    axiosWithAuth()
       .get("https://lambda-chef-portfolio.herokuapp.com/api/users")
       .then(response => {
         console.log(response);

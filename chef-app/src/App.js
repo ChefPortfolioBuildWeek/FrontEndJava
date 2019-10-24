@@ -7,6 +7,7 @@ import styled from "styled-components";
 import NavBar from "./Components/NavBar";
 import signUpPage from "./Components/Register";
 import GuestHome from "./Components/GuestHome";
+import PrivateRoute from "./Components/PrivateRoute";
 import GuestHomeContext from "./context/GuestHomeContext";
 import ChefCardContext from "./context/ChefCardContext";
 const Header = styled.div`
@@ -47,10 +48,10 @@ function App() {
               <h1>Welcome to the Chef Portfolio!</h1>
             </div>
             <Switch>
-              <Route exact path="/" component={chefOnboarding} />
-              <Route exact path="/chefposts" component={chefPosting} />
-              <Route exact path="/register" component={signUpPage} />
-              <Route exact path="/guesthome" component={GuestHome} />
+              <PrivateRoute exact path="/" component={chefOnboarding} />
+              <PrivateRoute exact path="/chefposts" component={chefPosting} />
+              <PrivateRoute exact path="/register" component={signUpPage} />
+              <PrivateRoute exact path="/guesthome" component={GuestHome} />
             </Switch>
           </Route>
         </GuestHomeContext.Provider>
