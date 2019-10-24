@@ -59,9 +59,9 @@ function Nav() {
        <NavLinks to='/'>
          <p>Login</p>
        </NavLinks>
-       <NavLinks to='/Chefposts'>
+       {/* <NavLinks to='/Chefposts'>
          <p>Chef Post</p>
-       </NavLinks>
+       </NavLinks> */}
        <NavLinks to='/guesthome'>
         <p>Guest Home</p>
        </NavLinks>

@@ -37,12 +37,12 @@ const Button = styled.button`
   border-radius: 5%;
 `;
 const ChefOnboarding = ({ event, touched, errors, status, props }) => {
-  const [chefs, setChefs] = useState([]);
-  const [login, setLogin] = useState([]);
+  const [username, setUsername] = useState([]);
+  const [password, setPassword] = useState([]);
 
   useEffect(
     props => {
-      status && setChefs(chefs => [...chefs, status]);
+      status && setUsername(chefs => [...chefs, status]);
     },
     [status]
   );
@@ -106,7 +106,7 @@ const FormikChefOnboarding = withFormik({
       .then(res => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
-        props.history.push("/ChefPostPage");
+        props.history.push("/Chefposts");
 
       })
       .catch(err => console.log(err.response));

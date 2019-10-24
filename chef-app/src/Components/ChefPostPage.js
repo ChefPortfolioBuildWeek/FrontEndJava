@@ -147,7 +147,7 @@ const FormikChefPosting = withFormik({
       description: description || "",
       username: username || "",
       imageURL: imageURL || "",
-      // location: location || ""
+      location: location || ""
     };
   },
   handleSubmit(values, { setStatus }) {
