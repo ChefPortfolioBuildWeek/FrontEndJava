@@ -101,7 +101,7 @@ const ChefPosting = ({ status }) => {
         /><br />
         <BoxField
           type="text"
-          name="location"
+          name="locations"
           placeholder="city/state"
         /><br />
         <Button type="submit">Post</Button>
@@ -127,11 +127,12 @@ const ChefPosting = ({ status }) => {
             </p>
             <p>
               <Big>Image: </Big>
-              {data.imageURL}
+              {data.imgURL}
             </p>
             <p>
               <Big>Location: </Big>
               {data.location}
+              {console.log(data.location)};
             </p>
           </PostCards>
         ))}
@@ -140,14 +141,14 @@ const ChefPosting = ({ status }) => {
   );
 };
 const FormikChefPosting = withFormik({
-  mapPropsToValues({ title, category, description, username, imageURL, location }) {
+  mapPropsToValues({ title, category, description, username, imgURL, locations }) {
     return {
       title: title || "",
       category: category || "",
       description: description || "",
       username: username || "",
-      imageURL: imageURL || "",
-      location: location || ""
+      imgURL: imgURL || "",
+      locations: locations || ""
     };
   },
   handleSubmit(values, { setStatus }) {
