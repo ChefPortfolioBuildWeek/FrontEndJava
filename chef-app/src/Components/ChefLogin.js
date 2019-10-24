@@ -37,12 +37,12 @@ const Button = styled.button`
   border-radius: 5%;
 `;
 const ChefOnboarding = ({ event, touched, errors, status, props }) => {
-  const [chefs, setChefs] = useState([]);
-  const [login, setLogin] = useState([]);
+  const [username, setUsername] = useState([]);
+  const [password, setPassword] = useState([]);
 
   useEffect(
     props => {
-      status && setChefs(chefs => [...chefs, status]);
+      status && setUsername(chefs => [...chefs, status]);
     },
     [status]
   );
@@ -71,7 +71,7 @@ const ChefOnboarding = ({ event, touched, errors, status, props }) => {
       <Route>
         <Link to="/chefposts">Continue as Guest</Link>
         <Switch>
-          <Route exact path="/chefposts" component={chefPosting} />
+          <Route exact path="/Chefposts" component={chefPosting} />
         </Switch>
       </Route>
       {/* {chefs.map(chef => (
@@ -96,7 +96,7 @@ const FormikChefOnboarding = withFormik({
     password: Yup.string().required("Password is a required field")
   }),
 
-  handleSubmit(values, { props}) {
+  handleSubmit(values, { props }) {
     console.log(props);
     axios
       .post(
@@ -106,8 +106,7 @@ const FormikChefOnboarding = withFormik({
       .then(res => {
         console.log(res.data);
         localStorage.setItem("token", res.data.token);
-        props.history.push("/ChefPostPage");
-
+        props.history.push("/Chefpost");
       })
       .catch(err => console.log(err.response));
   }
