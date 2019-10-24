@@ -30,6 +30,19 @@ const NavLinks = styled(Link)`
    background-color: white;
  }
 `;
+const NavLinksLogout = styled(Link)`
+ color: black;
+ border: 2px solid black;
+ text-decoration: none;
+ padding: 0% 2% 0% 2%;
+ margin-top: 1%;
+ font-weight: bold;
+ border-radius: 5px;
+ background-color: dodgerblue;
+ &:hover {
+   background-color: white;
+ }
+`;
 const Navo = styled.div`
   background: #9ffcdf;
   borderl: 2px solid black;
@@ -40,24 +53,24 @@ function Nav() {
   return (
     <Navo>
       <NavDiv>
-        <NavLinks to="/register">
-          <p>Sign-Up</p>
-        </NavLinks>
-        <NavLinks to="/">
-          <p>Login</p>
-        </NavLinks>
-        <NavLinks to="/Chefposts">
-          <p>Chef Post</p>
-        </NavLinks>
-        <NavLinks>
-          <p>Homepage</p>
-        </NavLinks>
-        <Route exact path="/cheflogin" component={SigninPage} />
-        <Route exact path="/chefpostpage" component={ChefPostPage} />
-        <NavLinks to="/">
-          <p>Log out</p>
-        </NavLinks>
-      </NavDiv>
+       <NavLinks to='/register'>
+         <p>Sign-Up</p>
+       </NavLinks>
+       <NavLinks to='/'>
+         <p>Login</p>
+       </NavLinks>
+       {/* <NavLinks to='/Chefposts'>
+         <p>Chef Post</p>
+       </NavLinks> */}
+       <NavLinks to='/guesthome'>
+        <p>Guest Home</p>
+       </NavLinks>
+       <Route exact path='/cheflogin' component={SigninPage} />
+       <Route exact path='/chefpostpage' component={ChefPostPage} />
+       <NavLinksLogout to='/'>
+         <p>Log out</p>
+       </NavLinksLogout>
+     </NavDiv>
     </Navo>
   );
 }

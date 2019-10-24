@@ -35,15 +35,13 @@ function Register(props) {
   const [password, setPassword] = useState("");
   const handleSubmit = e => {
     e.preventDefault(props);
-
-
     axios
       .post('https://lambda-chef-portfolio.herokuapp.com/api/auth/register',{ username: username, password }
       )
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        props.history.push("/ChefLogin");
+        props.history.push("/");
       })
       .catch(err => {
         console.log(err);
