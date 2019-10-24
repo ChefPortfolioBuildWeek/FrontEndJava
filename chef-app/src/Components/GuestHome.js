@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import axiosWithAuth from "../Utils/axiosWithAuth.js";
 import styled from "styled-components";
-//import GuestHome from "../context/GuestHomeContext.js";
+import axiosWithAuth from "../Utils/axiosWithAuth";
 
 const PostCard = styled.div`
   border: 2px solid black;
@@ -40,7 +39,6 @@ function GuestHome(handleSubmit) {
   const [query, setQuery] = useState("");
   const [filteredCards, setFilteredCards] = useState([]);
 
-
   useEffect(() => {
     axios
       .get("https://lambda-chef-portfolio.herokuapp.com/api/posts")
@@ -54,7 +52,7 @@ function GuestHome(handleSubmit) {
       });
   }, []);
   handleSubmit = () => {
-    axios
+    axiosWithAuth()
       .get("https://lambda-chef-portfolio.herokuapp.com/api/users")
       .then(response => {
         console.log(response);
@@ -72,7 +70,7 @@ function GuestHome(handleSubmit) {
   useEffect(() => {
     setFilteredCards(
       cards.filter(card =>
-        card.category.toLowerCase().includes(query.toLowerCase())
+        card.title.toLowerCase().includes(query.toLowerCase())
       )
     );
   }, [query]);
@@ -94,7 +92,7 @@ function GuestHome(handleSubmit) {
             value={query}
             name="title"
             tabIndex="0"
-            placeholder="search by dish"
+            placeholder="search by title"
             autoComplete="off"
           />
         </Form>
@@ -106,24 +104,24 @@ function GuestHome(handleSubmit) {
                 {data.title}
               </p>
               <p>
-                <Topic>Category: </Topic>
-                {data.category}
+                <Topic>Image: </Topic>
+                {data.imageURL}
               </p>
               <p>
-                <Topic>Description: </Topic>
-                {data.description}
+                <Topic>Category: </Topic>
+                {data.category}
               </p>
               <p>
                 <Topic>Chef: </Topic>
                 {data.username}
               </p>
               <p>
-                <Topic>Image: </Topic>
-                {data.imageURL}
-              </p>
-              <p>
                 <Topic>Location: </Topic>
                 {data.location}
+              </p>
+              <p>
+                <Topic>Description: </Topic>
+                {data.description}
               </p>
             </PostCard>
           ))}
