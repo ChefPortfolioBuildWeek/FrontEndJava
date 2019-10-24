@@ -54,7 +54,7 @@ export default function GuestHome() {
     useEffect(() => {
       setFilteredCards(
         cards.filter(card =>
-          card.category.toLowerCase().includes(query.toLowerCase())
+          card.title.toLowerCase().includes(query.toLowerCase())
         )
       );
     }, [query]);
@@ -79,7 +79,7 @@ export default function GuestHome() {
           value={query}
           name='title'
           tabIndex='0'
-          placeholder='search by dish'
+          placeholder='search by title'
           autoComplete='off'
           />
         </Form>
@@ -87,11 +87,11 @@ export default function GuestHome() {
           {filteredCards.map(data => (
             <PostCard key={data.id}>
               <p><Topic>Dish: </Topic>{data.title}</p>
-              <p><Topic>Category: </Topic>{data.category}</p>
-              <p><Topic>Description: </Topic>{data.description}</p>
-              <p><Topic>Chef: </Topic>{data.username}</p>
               <p><Topic>Image: </Topic>{data.imageURL}</p>
+              <p><Topic>Category: </Topic>{data.category}</p>
+              <p><Topic>Chef: </Topic>{data.username}</p>
               <p><Topic>Location: </Topic>{data.location}</p>
+              <p><Topic>Description: </Topic>{data.description}</p>
             </PostCard>
           ))}
         </CardArea>
