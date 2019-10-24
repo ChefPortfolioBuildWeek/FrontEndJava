@@ -40,22 +40,19 @@ function App() {
 
   return (
     <div className="App">
-      <GuestHomeContext.Provider value={{ create, update }}>
-        <GuestHomeContext.Provider value={(post, users, username)}>
-          <NavBar />
-          <Route>
-            <div>
-              <h1>Welcome to the Chef Portfolio!</h1>
-            </div>
-            <Switch>
-              <PrivateRoute exact path="/" component={chefOnboarding} />
-              <PrivateRoute exact path="/chefposts" component={chefPosting} />
-              <PrivateRoute exact path="/register" component={signUpPage} />
-              <PrivateRoute exact path="/guesthome" component={GuestHome} />
-            </Switch>
-          </Route>
-        </GuestHomeContext.Provider>
-      </GuestHomeContext.Provider>
+      <NavBar />
+      <Route>
+        <div>
+          <h1>Welcome to the Chef Portfolio!</h1>
+        </div>
+        
+        <Switch>
+          <Route exact path="/" component={chefOnboarding} />
+          <Route exact path="/chefposts" component={chefPosting} />
+          <Route exact path="/register" component={signUpPage} />
+          <Route exact path="/guesthome" component={GuestHome} />
+        </Switch>
+      </Route>
     </div>
   );
 }
