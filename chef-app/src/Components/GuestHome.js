@@ -50,7 +50,22 @@ export default function GuestHome() {
           console.log('Data not found', error)
         });
     }, []);
-  
+    handleSubmit = () => {
+    axiosWithAuth()
+      .get("https://lambda-chef-portfolio.herokuapp.com/api/users")
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.log(err.response));
+  };
+  handleSubmit = () => {
+    axiosWithAuth()
+      .get("https://lambda-chef-portfolio.herokuapp.com/api/posts/:username")
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.log(err.response));
+  };
     useEffect(() => {
       setFilteredCards(
         cards.filter(card =>
@@ -98,3 +113,4 @@ export default function GuestHome() {
       </section>
     )};
   }
+export default ChefCardPost;
