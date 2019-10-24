@@ -37,6 +37,7 @@ function App() {
         <div>
           <h1>Welcome to the Chef Portfolio!</h1>
         </div>
+        
         <Switch>
           <Route exact path="/" component={chefOnboarding} />
           <Route exact path="/chefposts" component={chefPosting} />
