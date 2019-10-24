@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import styled from "styled-components";
+import ChefCardContext from "../context/ChefCardContext.js";
 
 const PostPage = styled.div`
   background-color: #52ad9c;
@@ -61,6 +62,7 @@ const Big = styled.big`
 const ChefPosting = ({ status }) => {
   // const [posts, setPosts] = useState([{title:' ', category:' ', description:' ', imgURL:' ', username:' ', location:' '}]);
   const [posts, setPosts] = useState([]);
+  const { create, update } = useContext(ChefCardContext);
 
   useEffect(() => {
     status && setPosts(posts => [...posts, status]);
@@ -70,11 +72,8 @@ const ChefPosting = ({ status }) => {
     <PostPage>
       <CenterForm>Make New Post</CenterForm>
       <Form>
-        <BoxField
-        type="text"
-        name="title"
-        placeholder="title/name of dish"
-        /><br />
+        <BoxField type="text" name="title" placeholder="title/name of dish" />
+        <br />
         <BoxField component="select" name="category">
           <option>Please Choose an Option</option>
           <option>Breakfast</option>
@@ -82,28 +81,21 @@ const ChefPosting = ({ status }) => {
           <option>Dinner</option>
           <option>Snack</option>
           <option>Dessert</option>
-        </BoxField><br />
+        </BoxField>
+        <br />
         <BoxField
           component="textarea"
           type="text"
           name="description"
           placeholder="description"
-        /><br />
-        <BoxField
-          type="text"
-          name="username"
-          placeholder="username"
-        /><br />
-        <BoxField
-          type="text"
-          name="imgURL"
-          placeholder="post an image"
-        /><br />
-        <BoxField
-          type="text"
-          name="location"
-          placeholder="city/state"
-        /><br />
+        />
+        <br />
+        <BoxField type="text" name="username" placeholder="username" />
+        <br />
+        <BoxField type="text" name="imgURL" placeholder="post an image" />
+        <br />
+        <BoxField type="text" name="location" placeholder="city/state" />
+        <br />
         <Button type="submit">Post</Button>
       </Form>
       <CardArea>

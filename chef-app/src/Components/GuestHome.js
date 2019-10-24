@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import axiosWithAuth from "../Utils/axiosWithAuth";
-import GuestHomeContext from "../context/GuestHomeContext.js";
+import GuestHomeContext from "../context/GuestHomeContext.js"
 
 const PostCard = styled.div`
   border: 2px solid black;
