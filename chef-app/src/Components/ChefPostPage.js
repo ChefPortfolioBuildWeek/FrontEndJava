@@ -5,6 +5,9 @@ import styled from "styled-components";
 import ChefCardContext from "../context/ChefCardContext.js";
 import ChefCardPost from "./ChefCardPost.js";
 
+import ImageUpload from "./ImageUpload";
+import ImageDownload from "./ImageDownload";
+
 const PostPage = styled.div`
   background-color: #52ad9c;
   color: 347624f;
@@ -95,8 +98,9 @@ const ChefPosting = status => {
         <br />
         <BoxField type="text" name="imgURL" placeholder="post an image" />
         <br />
-        <BoxField type="text" name="location" placeholder="city/state" />
+        <BoxField type="text" name="locations" placeholder="city/state" />
         <br />
+
         <Button type="submit">Post</Button>
       </Form>
       <CardArea>
@@ -120,11 +124,15 @@ const ChefPosting = status => {
             </p>
             <p>
               <Big>Image: </Big>
-              {data.imageURL}
+              {data.imgURL}
             </p>
             <p>
               <Big>Location: </Big>
               {data.location}
+            </p>
+            <p>
+              <Big>Picture: </Big>
+              <ImageDownload />
             </p>
           </PostCards>
         ))}
@@ -138,7 +146,7 @@ const FormikChefPosting = withFormik({
     category,
     description,
     username,
-    imageURL,
+    imgURL,
     location
   }) {
     return {
@@ -146,7 +154,7 @@ const FormikChefPosting = withFormik({
       category: category || "",
       description: description || "",
       username: username || "",
-      imageURL: imageURL || "",
+      imgURL: imgURL || "",
       location: location || ""
     };
   },
