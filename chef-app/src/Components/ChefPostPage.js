@@ -3,6 +3,11 @@ import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import styled from "styled-components";
 
+import ImageUpload from "./ImageUpload";
+import ImageDownload from "./ImageDownload";
+
+
+
 const PostPage = styled.div`
   background-color: #52ad9c;
   color: 347624f;
@@ -91,19 +96,7 @@ const ChefPosting = ({ status }) => {
         /><br />
         <BoxField
           type="text"
-          name="username"
-          placeholder="username"
-        /><br />
-        <BoxField
-          type="text"
-          name="imgURL"
-          placeholder="post an image"
-        /><br />
-        <BoxField
-          type="text"
-          name="location"
-          placeholder="city/state"
-        /><br />
+
         <Button type="submit">Post</Button>
       </Form>
       <CardArea>
@@ -132,6 +125,10 @@ const ChefPosting = ({ status }) => {
             <p>
               <Big>Location: </Big>
               {data.location}
+            </p>
+            <p>
+              <Big>Picture: </Big>
+              <ImageDownload />
             </p>
           </PostCards>
         ))}
