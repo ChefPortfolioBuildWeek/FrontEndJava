@@ -7,11 +7,10 @@ export function ChefCardPost() {
   const [post, setPost] = useState([]);
 
   // '/posts/create'
-  axiosWithAuth()
-    .post(
-      `https://lambda-chef-portfolio.herokuapp.com/api/posts/create`,
-      { post }
-    )
+  axios
+    .post(`https://lambda-chef-portfolio.herokuapp.com/api/posts/create`, {
+      post
+    })
     .then(res => {
       console.log(res);
       localStorage.setPost("token", res.data.token);
