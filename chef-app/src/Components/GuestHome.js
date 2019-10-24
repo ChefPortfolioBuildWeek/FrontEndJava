@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import axiosWithAuth from '../Utils/axiosWithAuth';
 
 const PostCard = styled.div`
   border: 2px solid black;
@@ -33,7 +34,7 @@ const Input = styled.input`
   border: 2px solid black;
 `;
 
-export default function GuestHome() {
+function GuestHome(handleSubmit) {
       const [cards, setCards] = useState([]);
       const [query, setQuery] = useState('');
       const [filteredCards, setFilteredCards] = useState([]);
@@ -113,4 +114,4 @@ export default function GuestHome() {
       </section>
     )};
   }
-export default ChefCardPost;
+export default GuestHome;
