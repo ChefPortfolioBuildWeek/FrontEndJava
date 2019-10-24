@@ -1,8 +1,7 @@
-
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const RegisterPage = styled.div`
   background-color: #52ad9c;
@@ -19,16 +18,15 @@ const RegisterForm = styled.div`
   margin: 0 auto;
 `;
 const BoxField = styled.input`
- padding: 1%;
- margin: 0 auto;
- margin-top: 1%;
- border: 2px solid black;
- width: 20%;
+  padding: 1%;
+  margin: 0 auto;
+  margin-top: 1%;
+  border: 2px solid black;
+  width: 20%;
 `;
 const CenterForm = styled.h1`
- margin-top: 15%;
+  margin-top: 15%;
 `;
-
 
 function Register(props) {
   const [username, setUsername] = useState("");
@@ -36,12 +34,14 @@ function Register(props) {
   const handleSubmit = e => {
     e.preventDefault(props);
     axios
-      .post('https://lambda-chef-portfolio.herokuapp.com/api/auth/register',{ username: username, password }
-      )
+      .post("https://lambda-chef-portfolio.herokuapp.com/api/auth/register", {
+        username: username,
+        password
+      })
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        props.history.push("/");
+        props.history.push("/protected");
       })
       .catch(err => {
         console.log(err);
@@ -65,7 +65,8 @@ function Register(props) {
             type="password"
             onChange={e => setPassword(e.target.value)}
             placeholder="password"
-          /><br />
+          />
+          <br />
         </RegisterForm>
         <button type="submit" className="SubmitButtonregister">
           Connect!
