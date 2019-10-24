@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import styled from "styled-components";
-import ChefCardPost from "./ChefCardPost";
-// import ChefCardContext from "../context/ChefCardContext";
 
 const PostPage = styled.div`
   background-color: #52ad9c;
@@ -64,15 +62,12 @@ const ChefPosting = ({ status }) => {
   // const [posts, setPosts] = useState([{title:' ', category:' ', description:' ', imgURL:' ', username:' ', location:' '}]);
   const [posts, setPosts] = useState([]);
 
-  // const ChefCard = useContext(ChefCardContext);
-
   useEffect(() => {
     status && setPosts(posts => [...posts, status]);
   }, [status]);
 
   return (
     <PostPage>
-      {/* <ChefCardPost /> */}
       <CenterForm>Make New Post</CenterForm>
       <Form>
         <BoxField 
@@ -112,31 +107,31 @@ const ChefPosting = ({ status }) => {
         <Button type="submit">Post</Button>
       </Form>
       <CardArea>
-        {posts.map(post => (
-          <PostCards key={post.id}>
+        {posts.map(data => (
+          <PostCards key={data.id}>
             <p>
               <Big>Dish: </Big>
-              {post.title}
+              {data.title}
             </p>
             <p>
               <Big>Meal Type: </Big>
-              {post.category}
+              {data.category}
             </p>
             <p>
               <Big>Description: </Big>
-              {post.description}
+              {data.description}
             </p>
             <p>
               <Big>Chef: </Big>
-              {post.username}
+              {data.username}
             </p>
             <p>
               <Big>Image: </Big>
-              {post.imageURL}
+              {data.imageURL}
             </p>
             <p>
               <Big>Location: </Big>
-              {post.location}
+              {data.location}
             </p>
           </PostCards>
         ))}
@@ -152,7 +147,7 @@ const FormikChefPosting = withFormik({
       description: description || "",
       username: username || "",
       imageURL: imageURL || "",
-      location: location || ""
+      // location: location || ""
     };
   },
   handleSubmit(values, { setStatus }) {
