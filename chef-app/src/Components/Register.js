@@ -35,8 +35,6 @@ function Register(props) {
   const [password, setPassword] = useState("");
   const handleSubmit = e => {
     e.preventDefault(props);
-
-
     axios
       .post('https://lambda-chef-portfolio.herokuapp.com/api/auth/register',{ username: username, password }
       )
