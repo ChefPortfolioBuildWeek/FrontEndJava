@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import styled from "styled-components";
+import axiosWithAuth from "../Utils/axiosWithAuth.js";
+//import ChefCardPost from "./ChefCardPost.js";
 
-import ImageUpload from "./ImageUpload";
-import ImageDownload from "./ImageDownload";
-
-
+//import ImageUpload from "./ImageUpload";
+//import ImageDownload from "./ImageDownload";
 
 const PostPage = styled.div`
   background-color: #52ad9c;
@@ -63,7 +63,7 @@ const Big = styled.big`
   font-weight: bold;
 `;
 
-const ChefPosting = ({ status }) => {
+const ChefPosting = status => {
   // const [posts, setPosts] = useState([{title:' ', category:' ', description:' ', imgURL:' ', username:' ', location:' '}]);
   const [posts, setPosts] = useState([]);
 
@@ -75,11 +75,8 @@ const ChefPosting = ({ status }) => {
     <PostPage>
       <CenterForm>Make New Post</CenterForm>
       <Form>
-        <BoxField
-        type="text"
-        name="title"
-        placeholder="title/name of dish"
-        /><br />
+        <BoxField type="text" name="title" placeholder="title/name of dish" />
+        <br />
         <BoxField component="select" name="category">
           <option>Please Choose an Option</option>
           <option>Breakfast</option>
@@ -87,7 +84,8 @@ const ChefPosting = ({ status }) => {
           <option>Dinner</option>
           <option>Snack</option>
           <option>Dessert</option>
-        </BoxField><br />
+        </BoxField>
+        <br />
         <BoxField
           component="textarea"
           type="text"
@@ -96,7 +94,19 @@ const ChefPosting = ({ status }) => {
         /><br />
         <BoxField
           type="text"
-
+          name="username"
+          placeholder="username"
+        /><br />
+        <BoxField
+          type="text"
+          name="imgURL"
+          placeholder="post an image"
+        /><br />
+        <BoxField
+          type="text"
+          name="locations"
+          placeholder="city/state"
+        /><br />
         <Button type="submit">Post</Button>
       </Form>
       <CardArea>
@@ -120,15 +130,12 @@ const ChefPosting = ({ status }) => {
             </p>
             <p>
               <Big>Image: </Big>
-              {data.imageURL}
+              {data.imgURL}
             </p>
             <p>
               <Big>Location: </Big>
               {data.location}
-            </p>
-            <p>
-              <Big>Picture: </Big>
-              <ImageDownload />
+              {console.log(data.location)};
             </p>
           </PostCards>
         ))}
@@ -137,25 +144,18 @@ const ChefPosting = ({ status }) => {
   );
 };
 const FormikChefPosting = withFormik({
-  mapPropsToValues({
-    title,
-    category,
-    description,
-    username,
-    imageURL,
-    location
-  }) {
+  mapPropsToValues({ title, category, description, username, imgURL, locations }) {
     return {
       title: title || "",
       category: category || "",
       description: description || "",
       username: username || "",
-      imageURL: imageURL || "",
-      location: location || ""
+      imgURL: imgURL || "",
+      locations: locations || ""
     };
   },
   handleSubmit(values, { setStatus }) {
-    axios
+    axiosWithAuth()
       .post(
         "https://lambda-chef-portfolio.herokuapp.com/api/posts/create",
         values
