@@ -5,7 +5,8 @@ import chefOnboarding from "./Components/ChefLogin";
 import chefPosting from "./Components/ChefPostPage";
 import styled from "styled-components";
 import NavBar from "./Components/NavBar";
-import SignUpPage from "./Components/Register";
+import signUpPage from "./Components/Register";
+import GuestHome from "./Components/GuestHome";
 
 const Header = styled.div`
   display: flex;
@@ -39,7 +40,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={chefOnboarding} />
           <Route exact path="/chefposts" component={chefPosting} />
-          <Route exact path="/register" component={SignUpPage} />
+          <Route exact path="/register" component={signUpPage} />
+          <Route exact path="/guesthome" component={GuestHome} />
         </Switch>
       </Route>
     </div>

@@ -20,13 +20,13 @@ const RegisterForm = styled.div`
 `;
 const BoxField = styled.input`
  padding: 1%;
+ margin: 0 auto;
  margin-top: 1%;
  border: 2px solid black;
  width: 20%;
- margin: 0 auto;
 `;
 const CenterForm = styled.h1`
- margin-top: 35%;
+ margin-top: 15%;
 `;
 
 
@@ -43,37 +43,37 @@ function Register(props) {
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        props.history.push("/ChefLogin");
+        props.history.push("/");
       })
       .catch(err => {
         console.log(err);
       });
   };
   return (
-    <div className="RegisterForm">
+    <RegisterPage>
       <form onSubmit={handleSubmit}>
-        <p>Register</p>
-        <div className="inputregister">
-          <input
+        <CenterForm>Register</CenterForm>
+        <RegisterForm>
+          <BoxField
             value={username}
             name="username"
             type="text"
             onChange={e => setUsername(e.target.value)}
             placeholder="username"
           />
-          <input
+          <BoxField
             value={password}
             name="password"
             type="password"
             onChange={e => setPassword(e.target.value)}
             placeholder="password"
-          />
-        </div>
+          /><br />
+        </RegisterForm>
         <button type="submit" className="SubmitButtonregister">
           Connect!
         </button>
       </form>
-    </div>
+    </RegisterPage>
   );
 }
 export default Register;

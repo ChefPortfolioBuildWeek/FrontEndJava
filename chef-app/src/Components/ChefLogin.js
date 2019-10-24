@@ -24,7 +24,7 @@ const BoxField = styled(Field)`
   width: 20%;
 `;
 const CenterForm = styled.h1`
-  margin-top: 30%;
+  margin-top: 12%;
 `;
 const Button = styled.button`
   margin: 1% 0% 1% 0%;
@@ -39,17 +39,6 @@ const Button = styled.button`
 const ChefOnboarding = ({ event, touched, errors, status, props }) => {
   const [chefs, setChefs] = useState([]);
   const [login, setLogin] = useState([]);
-  const handleSubmit = event=> {
-    event.preventDefault();
-    axiosWithAuth()
-      .post("https://lambda-chef-portfolio.herokuapp.com/api/auth/login", login)
-      .then(response => {
-        localStorage.setItem("token", response.data.token);
-        props.history.push("/ChefPostPage");
-      })
-      .catch(err => console.log(err.response));
-    setLogin({ username: "", password: "" });
-  };
 
   useEffect(
     props => {
@@ -61,22 +50,21 @@ const ChefOnboarding = ({ event, touched, errors, status, props }) => {
     <HomePage>
       <CenterForm>Login</CenterForm>
       <Form>
-        <BoxField type="text" name="email" placeholder="email" />
-        {touched.email && errors.email && <p>{errors.email}</p>}
+        <BoxField type="text" name="username" placeholder="username" />
+        {touched.username && errors.username && <p>{errors.username}</p>}
         <br />
         <BoxField type="password" name="password" placeholder="password" />
         {touched.password && errors.password && <p>{errors.password}</p>}
         <br />
-
-        <button type="submit" className="SubmitButton">
+        <button type="submit" className="SubmitButtonn">
           Login!
         </button>
+        <br />
         <span>
-          Dont have an account? <Link to="./Register">Register Account!</Link>
+          Dont have an account? <Link to="/register">Register Account!</Link>
         </span>
         <Route>
           {/* <Route exact path=‘/chefposts’ component={chefPosting} />
-
                   <button type=‘submit’ onClick={chefPosting}>Login</button> */}
         </Route>
       </Form>
@@ -97,15 +85,25 @@ const ChefOnboarding = ({ event, touched, errors, status, props }) => {
   );
 };
 const FormikChefOnboarding = withFormik({
-  mapPropsToValues({ name, email, password, termsOfService }) {
+  mapPropsToValues({ username, password, termsOfService }) {
     return {
-      email: email || "",
+      username: username || "",
       password: password || ""
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string().required("Email is a required field"),
+    username: Yup.string().required("Username is a required field"),
     password: Yup.string().required("Password is a required field")
-  })
+  }),
+
+  handleSubmit(props, login) {
+    axios
+      .post("https://lambda-chef-portfolio.herokuapp.com/api/auth/login", login)
+      .then(response => {
+        localStorage.setItem("token", response.data.token);
+        props.history.push("/ChefPostPage");
+      })
+      .catch(err => console.log(err.response));
+  }
 })(ChefOnboarding);
 export default FormikChefOnboarding;
