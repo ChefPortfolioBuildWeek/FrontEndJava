@@ -3,6 +3,7 @@ import { withFormik, Form, Field } from "formik";
 import axios from "axios";
 import styled from "styled-components";
 import ChefCardContext from "../context/ChefCardContext.js";
+import ChefCardPost from "./ChefCardPost.js";
 
 const PostPage = styled.div`
   background-color: #52ad9c;
@@ -59,10 +60,9 @@ const Big = styled.big`
   font-weight: bold;
 `;
 
-const ChefPosting = ({ status }) => {
+const ChefPosting = status => {
   // const [posts, setPosts] = useState([{title:' ', category:' ', description:' ', imgURL:' ', username:' ', location:' '}]);
   const [posts, setPosts] = useState([]);
-  const { create, update } = useContext(ChefCardContext);
 
   useEffect(() => {
     status && setPosts(posts => [...posts, status]);
@@ -70,6 +70,7 @@ const ChefPosting = ({ status }) => {
 
   return (
     <PostPage>
+      <ChefCardPost />
       <CenterForm>Make New Post</CenterForm>
       <Form>
         <BoxField type="text" name="title" placeholder="title/name of dish" />

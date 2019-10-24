@@ -3,7 +3,7 @@ import { useContext } from "react";
 import axiosWithAuth from "../Utils/axiosWithAuth.js";
 import axios from "axios";
 
-export function ChefCardPost() {
+function ChefCardPost() {
   const [deleteitem, setDeleteitem] = useState([]);
   const [post, setPost] = useState([]);
 
@@ -58,3 +58,4 @@ export function ChefCardPost() {
     </div>
   );
 }
+export default ChefCardPost;
