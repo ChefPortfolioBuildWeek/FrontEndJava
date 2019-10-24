@@ -71,7 +71,7 @@ const ChefOnboarding = ({ event, touched, errors, status, props }) => {
       <Route>
         <Link to="/chefposts">Continue as Guest</Link>
         <Switch>
-          <Route exact path="/chefposts" component={chefPosting} />
+          <Route exact path="/Chefposts" component={chefPosting} />
         </Switch>
       </Route>
       {/* {chefs.map(chef => (
@@ -96,7 +96,7 @@ const FormikChefOnboarding = withFormik({
     password: Yup.string().required("Password is a required field")
   }),
 
-  handleSubmit(values, { props}) {
+  handleSubmit(values, { props }) {
     console.log(props);
     axios
       .post(
