@@ -37,7 +37,8 @@ function ImageUpload() {
         {loading ? (
           <h3>loading</h3>
         ) : (
-          <img src={ image } style={{wid: '150px'}} />
+          <img src={ image } style={{width: '300px'}} />
+          
         )}
     </div>
   );

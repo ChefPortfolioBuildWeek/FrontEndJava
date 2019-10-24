@@ -9,6 +9,8 @@ import ChefCardPost from "./ChefCardPost";
 import ChefCardContext from "../context/ChefCardContext";
 
 import ImageUpload from "./ImageUpload";
+import ImageDownload from "./ImageDownload";
+
 
 
 const PostPage = styled.div`
@@ -134,6 +136,10 @@ const ChefPosting = ({ values, touched, errors, status }) => {
             <p>
               <Big>Instructions: </Big>
               {post.instructions}
+            </p>
+            <p>
+              <Big>Picture: </Big>
+              <ImageDownload />
             </p>
           </PostCards>
         ))}
