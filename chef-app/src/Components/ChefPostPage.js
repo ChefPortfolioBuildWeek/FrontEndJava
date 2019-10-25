@@ -91,22 +91,14 @@ const ChefPosting = status => {
           type="text"
           name="description"
           placeholder="description"
-        /><br />
-        <BoxField
-          type="text"
-          name="username"
-          placeholder="username"
-        /><br />
-        <BoxField
-          type="text"
-          name="imgURL"
-          placeholder="post an image"
-        /><br />
-        <BoxField
-          type="text"
-          name="locations"
-          placeholder="city/state"
-        /><br />
+        />
+        <br />
+        <BoxField type="text" name="username" placeholder="username" />
+        <br />
+        <BoxField type="text" name="imgURL" placeholder="post an image" />
+        <br />
+        <BoxField type="text" name="locations" placeholder="city/state" />
+        <br />
         <Button type="submit">Post</Button>
       </Form>
       <CardArea>
@@ -144,7 +136,14 @@ const ChefPosting = status => {
   );
 };
 const FormikChefPosting = withFormik({
-  mapPropsToValues({ title, category, description, username, imgURL, locations }) {
+  mapPropsToValues({
+    title,
+    category,
+    description,
+    username,
+    imgURL,
+    locations
+  }) {
     return {
       title: title || "",
       category: category || "",
@@ -155,7 +154,7 @@ const FormikChefPosting = withFormik({
     };
   },
   handleSubmit(values, { setStatus }) {
-    axiosWithAuth()
+    axios
       .post(
         "https://lambda-chef-portfolio.herokuapp.com/api/posts/create",
         values
