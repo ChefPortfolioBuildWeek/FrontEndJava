@@ -5,9 +5,6 @@ import styled from "styled-components";
 import axiosWithAuth from "../Utils/axiosWithAuth.js";
 //import ChefCardPost from "./ChefCardPost.js";
 
-//import ImageUpload from "./ImageUpload";
-//import ImageDownload from "./ImageDownload";
-
 const PostPage = styled.div`
   background-color: #52ad9c;
   color: 347624f;
@@ -154,7 +151,7 @@ const FormikChefPosting = withFormik({
     };
   },
   handleSubmit(values, { setStatus }) {
-    axios
+    axiosWithAuth()
       .post(
         "https://lambda-chef-portfolio.herokuapp.com/api/posts/create",
         values

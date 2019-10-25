@@ -1,8 +1,22 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+import { Route, Link, Switch } from "react-router-dom";
+import chefPosting from "./ChefPostPage";
 
 //axios
 import axios from "axios";
 import axiosWithAuth from "../Utils/axiosWithAuth.js";
+
+const button = styled.button`
+  margin: 1% 0% 1% 0%;
+  padding: 1%;
+  width: 10%;
+  font-weight: bold;
+  background-color: #9ffcdf;
+  color: #47624f;
+  border: 2px solid #47624f;
+  border-radius: 5%;
+`;
 
 const Login = props => {
   const [login, setLogin] = useState({ username: "", password: "" });
@@ -23,7 +37,7 @@ const Login = props => {
       .then(response => {
         console.log(response);
         localStorage.setItem("token", response.data.payload);
-        props.history.push("/Chefpost");
+        props.history.push("/chefpostpage");
       })
       .catch(err => console.log("error in handlesSub", err.response));
 
@@ -32,7 +46,6 @@ const Login = props => {
 
   return (
     <div className="loginContainer">
-      <h1>Welcome to My Chef Recipes!</h1>
       <form onSubmit={handleSubmit}>
         <input
           className="name"
@@ -53,6 +66,12 @@ const Login = props => {
         <button type="submit" className="SubmitButton">
           Connect!
         </button>
+        <Route>
+          <Link to="/chefposts">Continue as Guest</Link>
+          <Switch>
+            <Route exact path="/Chefposts" component={chefPosting} />
+          </Switch>
+        </Route>
       </form>
     </div>
   );
